@@ -1,8 +1,16 @@
 # Jenkins
 ## We can install jenkins from official documentation of Jenkins as it is based on Java so first we need to install Java. [Jenkins Installation](https://www.jenkins.io/doc/book/installing/linux/) Generally Jenkins run on Port 8080 so make sure to add port in Inbound Securities.
+<img width="806" height="399" alt="Screenshot 2026-06-23 210432" src="https://github.com/user-attachments/assets/cd3bc147-30bd-44c1-8182-79941c630dd0" />
 
+<img width="857" height="342" alt="Screenshot 2026-06-23 210653" src="https://github.com/user-attachments/assets/68c972f2-9ce5-4b7f-bba6-7515b879ea01" />
 
 ## There are various types in which we can create job in Jenkins such as: Freestyle Project(where we can do anything like code clone, docker run, we have to give commands one after other for this), Pipeline(in this we have to define Declarative Pipelines that we discuss later), Multi-configuration Project(in this if we want to write in multiple environment like dev,staging, production), Folder(is basically for grouping things we can write anything inside that folder), MultiBranch Pipeline(in git we have multiple branch such as master,dev,production so we can perform for them) and in Organization Folder we can keep different jobs in that folder.
+
+## Freestyle Project
+<img width="778" height="434" alt="Screenshot 2026-06-23 214813" src="https://github.com/user-attachments/assets/5412609d-9547-4828-8431-2dc1fe5df4b8" />
+
+<img width="662" height="445" alt="Screenshot 2026-06-23 211447" src="https://github.com/user-attachments/assets/a435c0ed-260f-4d3d-80b5-3a36f055a74b" />
+
 
 # Declarative Pipeline:
 ```groovy
@@ -75,6 +83,10 @@ pipeline {
 # Credentials Bindings:
 ## Manage Jenkins -> Credentials(Under Security Section) -> global credentials -> Add Credentials
 
+<img width="959" height="263" alt="Screenshot 2026-06-23 214839" src="https://github.com/user-attachments/assets/c6ad5002-7373-4f33-a073-db7117472957" />
+![Uploading Screenshot 2026-06-23 214813.png…]()
+
+
 ## Now after creation of this we can use it in our pipeline like this
 ```groovy
 stage("Push to Docker Hub"){
@@ -91,4 +103,7 @@ stage("Push to Docker Hub"){
 
 # adding Github Webhook:
 ## go to settings of your repo(not github settings) and then from side menu click on Webhooks -> Add Webhook
+
+<img width="575" height="380" alt="Screenshot 2026-06-23 215623" src="https://github.com/user-attachments/assets/1dbd1c04-713d-4b23-bef9-1a02a8563d6a" />
+
 
