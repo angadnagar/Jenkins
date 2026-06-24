@@ -107,3 +107,40 @@ stage("Push to Docker Hub"){
 <img width="575" height="380" alt="Screenshot 2026-06-23 215623" src="https://github.com/user-attachments/assets/1dbd1c04-713d-4b23-bef9-1a02a8563d6a" />
 
 
+# Shared library:
+## It is groovy code that we can reuse in our pipeline
+## create vars folder in your repo and inside that keep all library code
+```groovy
+basic file(clone.groovy)
+
+def call(String url,String branch){
+    echo "Cloning the code"
+    git url:"${url}",branch:"${branch}"
+}
+``` 
+## after creating all this files, do this in jenkins so that it will know where your shared libraries are there
+## Manage Jenkins -> System -> Global Trusted Pipeline Libraries -> Add(and add proper name of shared library and from where we are getting this like github )
+
+## after this make sure to add this at the top of pipeline
+```groovy
+@Library("<here library name comes that we gave while adding pipeline libraries>") _
+
+like this 
+@Library("Shared") _
+
+and in stage you can use like this
+
+stage("Code"){
+    steps{
+        script{
+            clone("url to be clones","main")
+        }
+    }
+}
+```
+
+## instead of changing jenkins script everytime in jenkins ui we can create one file "JenkinsFile" and we can put code there and in Jenkins ui we can select Pipeline Script from SCM and can provide the github link where this file is present
+
+# Role Management in Jenkins:
+## create user in Jenkins and install plugin Role-based Authorization strategy so that we can manage roles
+## Manage Jenkins -> Security -> Authorization ->(select Role Based Strategy) and Save and then inside Manage Jenkins -> we can see a option (Manage and Assign Roles) so we can add role and can manage what all access we want and then assign that role to user
